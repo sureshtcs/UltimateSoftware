@@ -12,7 +12,7 @@ import com.ultimatesoftware.school.domain.person.Student;
 
 @Entity
 @Table(name = "student_subject")
-public class StudentSubject {
+public class StudentSubject {   // Comment 5 - This problem may not require 3 Entity class to implement the required functionality. I would have designed with both Student & Subject class & ignored this entity.
 
 	@Id
 	@GeneratedValue

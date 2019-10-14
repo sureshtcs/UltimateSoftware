@@ -30,7 +30,7 @@ public class Student {
 	private String firstName;
 
 	@NotNull
-	@OneToMany(mappedBy = "student", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	@OneToMany(mappedBy = "student", cascade = { CascadeType.ALL }, orphanRemoval = true)    // Comment 4 - Cascade Type All is not recommended, a more specific type should have to be given rather giving a generic type.
 	private Set<StudentSubject> subjects = new HashSet<>();
 
 	public Long getId() {

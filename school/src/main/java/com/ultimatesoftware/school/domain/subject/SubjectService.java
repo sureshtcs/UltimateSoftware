@@ -38,7 +38,7 @@ public class SubjectService {
 	}
 
 	@Transactional
-	public Double getAverage(Subject subject) {
+	public Double getAverage(Subject subject) {   //Comment 6: Un-used method, should be removed.
 		return subject.getOriginalGrades().values().stream().mapToDouble(Double::doubleValue).average().getAsDouble();
 	}
 

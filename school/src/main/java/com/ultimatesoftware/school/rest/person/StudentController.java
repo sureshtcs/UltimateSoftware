@@ -51,7 +51,7 @@ public class StudentController {
 		if (!student.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found");
 		}
-		return studentDtoMapper.mapToDto(student.get());
+		return studentDtoMapper.mapToDto(student.get());  // Comment 7: Line 51 - 53 should be removed & in line 54, get method must be replaced with orElseThrow method to implement the same logic.
 	}
 
 	@PostMapping
@@ -75,7 +75,7 @@ public class StudentController {
 			if (!subject.isPresent()) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Subject not found");
 			}
-			subjects.add(subject.get());
+			subjects.add(subject.get());			// Comment 8: Line 75 - 77 should be removed & in line 54, get method must be replaced with orElseThrow method to implement the same logic.
 		}
 
 		student.get().setSubjects(subjects);
@@ -88,7 +88,7 @@ public class StudentController {
 		studentService.delete(id);
 	}
 
-	@GetMapping("/{studentId}/getOriginalGrade")
+	@GetMapping("/{studentId}/getOriginalGrade")   //Comment 9: Uri should be changed if there will be a conflict with line 106 getmapping uri, as rest doestn't know to invoke which of these 2 method.
 	public Double getOriginalGrade(@PathVariable Long studentId, @RequestParam Long subjectId) {
 		Optional<Student> student = studentService.getStudent(studentId);
 		if (!student.isPresent()) {
@@ -100,7 +100,7 @@ public class StudentController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found");
 		}
 
-		return student.get().getOriginalGrade(subject.get());
+		return student.get().getOriginalGrade(subject.get());  //Comment 10: get method must be replaced with orElseThrow method to remove above if block.
 	}
 
 	@GetMapping("/{studentId}/getAdjustedGrade")
@@ -118,7 +118,7 @@ public class StudentController {
 		return student.get().getAdjustedGrade(subject.get());
 	}
 
-	@PutMapping("/{studentId}/setOriginalGrade")
+	@PutMapping("/{studentId}/setOriginalGrade")   //Comment 11: Uri should be changed if there will be a conflict with line 65 getmapping uri, as rest doestn't know to invoke which of these 2 method.
 	public StudentDto setOriginalGrade(@PathVariable Long studentId, @RequestBody SetGradeDto setGradeDto) {
 		Optional<Student> student = studentService.getStudent(studentId);
 		if (!student.isPresent()) {

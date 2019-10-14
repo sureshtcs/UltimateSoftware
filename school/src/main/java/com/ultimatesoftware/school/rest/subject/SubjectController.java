@@ -56,7 +56,7 @@ public class SubjectController {
 		if (!subject.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Subject not found");
 		}
-		return subjectDtoMapper.mapToDto(subject.get());
+		return subjectDtoMapper.mapToDto(subject.get());  //Comment 12 : get method must be replaced with orElseThrow method to remove above if block.
 	}
 
 	@PostMapping
@@ -80,7 +80,7 @@ public class SubjectController {
 			if (!student.isPresent()) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found");
 			}
-			students.add(student.get());
+			students.add(student.get());  //Comment 13 : get method must be replaced with orElseThrow method to remove above if block.
 		}
 
 		subject.get().setStudents(students);
